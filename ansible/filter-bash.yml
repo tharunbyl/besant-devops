@@ -1,0 +1,8 @@
+---
+- name: this play for register values
+hosts: 10.0.0.117
+gather_facts: false
+tasks:
+- shell: "bash --version"
+  register: VARNAME
+- debug: VARNAME.stdout.split('\n')[0].split()[3]``

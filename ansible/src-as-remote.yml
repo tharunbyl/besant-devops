@@ -1,0 +1,10 @@
+tasks
+ - copy: src /root/hdfc dest=/tmp
+    remote_yes=yes
+tasks
+ - command:
+ cp /home/tharun/hdfc /tmp
+ mv /home/tharun/hdfc /tmp
+
+ 
+  

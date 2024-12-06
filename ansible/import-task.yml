@@ -1,0 +1,11 @@
+---
+- host: web
+  become: yes
+  tasks:
+  - name: instaling nginx
+    import_tasks: nginx.yml
+  - name: start the service
+    import_tasks: nginx-start.yml
+
+ 
+  

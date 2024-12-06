@@ -1,0 +1,3 @@
+vi nginx-start.yml
+---
+- service: name=nginx state=started 

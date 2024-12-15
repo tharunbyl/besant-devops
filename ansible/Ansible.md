@@ -52,3 +52,21 @@ yum install tree // for directory struture
 
 
 2) playbook 
+
+
+
+ansible-galaxy init nginx-role
+nginx-role
+
+tasks - copy, move, etc
+files - static like index.html
+tempalte - dynamic
+
+defaults - overridden
+vars - static
+
+handlers
+
+tests
+    inventory
+    test.yml

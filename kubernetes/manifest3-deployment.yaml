@@ -1,0 +1,24 @@
+
+# example is given, this is file NOT complete
+apiVersion: apps/v1
+kind: Deployment #Pod, Deployment, ReplicationController, Service, ReplicaSet, DaemonSet, Job
+metadata:
+  name: deployment1
+spec: 
+  replicas: 3
+  selector: 
+    matchLabels: 
+      city: mysore
+  strategy:
+    type: RollingUpdate #
+    rollingUpdate: 
+      maxSurge: 1 # n=1 extra pod is created in the new replica set, followed by deleting the old pod in the old replicaset
+      maxUnavailable: 0 
+  template: 
+    metadata:
+      labels:
+        city: mysore
+    spec:
+      containers:
+      - name: cont1
+        image: nginx

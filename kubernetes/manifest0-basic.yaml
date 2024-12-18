@@ -1,0 +1,11 @@
+# key is camelCase
+# kind's value is PascalCase
+
+apiVersion: v1
+kind: Pod #Pod, Deployment, ReplicationController, Service, ReplicaSet, DaemonSet, Job
+metadata:
+  name: first-pod
+spec: 
+  containers: 
+    - name: cont1
+      image: nginx

@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment #Pod, Deployment, ReplicationController, Service, ReplicaSet, DaemonSet, Job
+metadata:
+  name: first-deployment
+spec: 
+  replicas: 3
+  selector: 
+    matchLabels: 
+      car: ford
+  template: 
+    metadata:
+      labels:
+        car: ford
+    spec:
+      containers:
+      - name: cont1
+        image: nginx

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service #Pod, Deployment, ReplicationController, Service, ReplicaSet, DaemonSet, Job
+metadata:
+  name: cluster-service
+spec: 
+  selector:
+    app: nginx-app1
+  type: NodePort # optional, by default it takes it as ClusterIP
+  ports:
+    - protocol: TCP
+      port: 2000 # service port for external apps
+      targetPort: 80 # service to pod
+      nodePort: 31000 # 30000 - 32767, ec2 server. If not specified it picks it randomly 

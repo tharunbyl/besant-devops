@@ -99,7 +99,7 @@ App1         2              3
 
 dev          qa             pre-prod
 
-
+```
 vi pod1.yaml
 kubectl apply -f pod1.yaml
 kubectl get pods
@@ -112,7 +112,9 @@ kubectl logs first-pod
 kubectl delete pod first-pod
 kubectl get rs
 kubectl delete deployment <name>
-
+kubectl get svc // kubectl get service
+kubectl get all
+```
 ### Replica Set
 replicas: n // n=3, etc
 
@@ -132,3 +134,87 @@ maxUnavailable
 #### Blue/green Deployment
 blue - current infra
 green - new infra
+
+### Service
+1. ClusterIP
++ each pod has its own ip address
++ service is a load balancer for the ports
++ pod 
++ stable ip address
++ load balancer 
+
+ClusterIP is used for internal service communication
+
+2. Headless Service
+ClusterIP: None
+Connects only to primary R/W
+use case for DB 
+will have only one pod
+
+3. Node Port
+            Server Port (ex 31000)
+            \           |       /
+                Service(ex: 2000)
+            /           |       \
+            O(ex: 80)   O         O
+
+4. Load Balancer
+    Ingress
+
+
+
+
+
+
+### Resource Requests 
++ used to reserve resources for the pod
+```
+top
+```
+QOS Class: Best Effort // all avaialble memory, no limits and no requests 
+QOS Class: Burstable //  specified requests and limits
+
+NOTE: keep utilization to 50 to 60%, so that it can continue to create pods.
+
+### Stateful Set
+state less (web, app) vs stateful (db)
+
+### Dameon Set
+special kind of pod, which will recide only in worker (will not be moved to another worker)
+
+### Node Affinity 
+Preferred - node is preferred 
+Required - node must be available
+
+### Node Anti Affinity 
+
+### livenessprobe and readinessproble
+                     *
+        /             |           \
+
+### taint and toleration 
++ taint - node
+    ```
+    kubectl taint nodes <node-name> key=value:effect
+    ```
+    - No Schedule - exisiting pods will remain, only the new ones will be not allowed
+    - Prefer No Schedule - create pods in this node only if other are busy
+    - No Exclude - existing pods will be removed, new pods will be added
++ toleration - pod
+
+### config map and secrets 
+config map - non sensitive info
+secrets - sensitive info
+
+
+### volumes
+AWS - 5 GB
+PV - Persistent Volumne // volume id etc
+PVC - PV Claim // PVC size = PV
+Pod: PVC
+
+
+ec2 -> volumnes -> 5 gb -> dev/sdf -> 
+```
+kubectl get pv
+```

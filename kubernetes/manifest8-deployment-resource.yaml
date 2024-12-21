@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment #Pod, Deployment, ReplicationController, Service, ReplicaSet, DaemonSet, Job
+metadata:
+  name: first-deployment
+spec: 
+  replicas: 3
+  selector: 
+    matchLabels: 
+      car: ford
+  templates: 
+    metadata:
+      labels:
+        car: ford
+        app: nginx-app1
+    spec:
+      containers:
+      - name: cont1
+        image: nginx
+        ports:
+          containerPort: 80
+        resources:
+          requests: 
+            cpu: '0.5' # Requests 0.5 CPU cores
+            memory: '256Mi' # Requests 256 megabytes of memory 
+          limits:
+            cpu: '1' # Limits CPU to 1 CPU core
+            memory: '512Mi' # Limits memory to 312 megabytes

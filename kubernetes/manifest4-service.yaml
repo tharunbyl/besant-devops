@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service #Pod, Deployment, ReplicationController, Service, ReplicaSet, DaemonSet, Job
+metadata:
+  name: first-service
+spec: 
+  selector:
+    city: mysore
+  ports:
+    - protocol: TCP
+      port: 4200 # service port for external apps
+      targetPort: 80 # service to pod
